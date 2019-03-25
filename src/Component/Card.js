@@ -25,6 +25,7 @@ const Card = props => {
   return (
     <div className="card">
       <h5 className="card-header" />
+        <img className="card-img-top" src = {data.src} alt="Card image cap"/>
       <div className="card-body">
         <div className="fontifyHeader">
             {renderHeader()}

@@ -20,6 +20,11 @@ class Simulations2 extends Component {
       Gravitational: this.state.Gravitational
     };
   };
+fcol = ()=>{
+ return{
+   velocity:10
+ }
+};
   render() {
     const { start } = this.state;
     return (
@@ -125,10 +130,25 @@ class Simulations2 extends Component {
             </form>
           </div>
         </div>
-        <div className="row"><ReportCard info={this.col()} name="Blue"  title = "Initial Information"/></div>
+        <div className="card-deck"><ReportCard info={this.col()} name="Blue"  title = "Initial Information"/>{this.renderFinal()}</div>
+
       </>
     );
   }
+  renderFinal = () => {
+    if (this.state.start)
+      return (
+          <>
+            <ReportCard
+                info={this.fcol()}
+                name="Blue"
+                title="After The Motion"
+            />
+
+          </>
+      );
+    else return null;
+  };
   ButtonClick = event => {
     const { value, name } = event.target;
     this.setState({ start: true });
