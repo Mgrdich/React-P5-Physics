@@ -32,9 +32,10 @@ export default function(p) {
   };
 
   p.draw = () => {
-    p.background(0);
+    p.background(200, 250, 100);
     p.noStroke();
     p.ellipseMode(p.CENTER);
+    p.fill("blue");
     p.ellipse(p.x1, p.y1, p.radius * 2, p.radius * 2);
 
     if (p.ButtonClicked) {
@@ -46,7 +47,7 @@ export default function(p) {
 
   const ProjectileVector = () => {
     if (p.x1 > p.width - p.radius || p.y1 > p.height - p.radius) {
-      p.background("blue");
+      p.background(0);
       p.Vy = 0;
       p.Vx = 0;
     } else {

@@ -21,11 +21,11 @@ class Simulations1 extends Component {
     return (
         <>
           <div className="row">
-            <div className="col-9">
+            <div className="col-8">
               <P5Wrapper sketch={Sim1} p5Props={this.state}/>
             </div>
 
-            <div className="col-3">
+            <div className="col-4">
               <table className="table table-responsive mt-2 fontify">
                 <thead className="thead-dark">
                 <tr>

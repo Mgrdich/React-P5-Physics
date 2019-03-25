@@ -1,30 +1,38 @@
-.fontify{
-    font-family: "Courier New";
-    font-size: 18px;
-    color:black;
+.fontify {
+  font-family: "Courier New";
+  font-size: 18px;
+
 }
-button{
-   /* margin: 5px;*/
-    text-align: center;
+.fontifyw {
+  font-family: "Courier New";
+  font-size: 18px;
+  color: white;
 }
-.fontifyr{
-    font-family: "Courier New";
-    font-size: 25px;
-    color: dodgerblue;
+button {
+  /* margin: 5px;*/
+  text-align: center;
+}
+.fontifyr {
+  font-family: "Courier New";
+  font-size: 25px;
+  color: dodgerblue;
 }
 
-.fontifyErr{
-    font-family: "Courier New";
-    font-size: 35px;
-    color: red;
+.fontifyErr {
+  font-family: "Courier New";
+  font-size: 35px;
+  color: red;
 }
-.fontifyS{
-     font-family: "Courier New";
-     font-size: 18px;
-     color:black;
- }
-.fontifyHeader{
-    font-family: "Courier New";
-    font-size: 35px;
-    color: dodgerblue;
+.fontifyS {
+  font-family: "Courier New";
+  font-size: 18px;
+  color: black;
+}
+.fontifyHeader {
+  font-family: "Courier New";
+  font-size: 35px;
+  color: dodgerblue;
+}
+.myfooter {
+  text-align: center;
 }

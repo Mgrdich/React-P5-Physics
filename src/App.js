@@ -7,8 +7,9 @@ import Simulations1 from "./Component/Simulations1";
 import NotFound from "./Component/NotFound";
 import Simulations2 from "./Component/Simulations2";
 import BNavBar from "./Component/BNavbar";
-import Simulations from './Component/Simulations'
+import Simulations from "./Component/Simulations";
 import Simulations3 from "./Component/Simulations3";
+import Footer from "./Component/Footer";
 
 class App extends Component {
   render() {
@@ -23,10 +24,11 @@ class App extends Component {
           <Route path="/Simulations/Sim1" component={Simulations1} />
           <Route path="/Simulations/Sim2" component={Simulations2} />
 
-          <Route  path="/notFound" component={NotFound}/>
+          <Route path="/notFound" component={NotFound} />
           <Redirect exact from="/" to="/Home" />
           <Redirect to="/notFound" />
         </Switch>
+        <Footer />
       </div>
     );
   }
