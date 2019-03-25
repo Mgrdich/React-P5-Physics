@@ -1,0 +1,43 @@
+{
+  "name": "untitled",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "faker": "^4.1.0",
+    "font-awesome": "^4.7.0",
+    "joi-browser": "^13.4.0",
+    "lodash": "^4.17.10",
+    "mdbreact": "^4.11.1",
+    "p5": "^0.7.3",
+    "prop-types": "^15.6.2",
+    "query-string": "^6.1.0",
+    "react": "^16.8.2",
+    "react-bootstrap": "^1.0.0-beta.6",
+    "react-dom": "^16.8.2",
+    "react-p5-wrapper": "0.0.4",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.5",
+    "react-toastify": "^4.1.0",
+    "redux": "^4.0.1",
+    "redux-form": "^8.1.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

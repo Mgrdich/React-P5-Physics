@@ -1,0 +1,30 @@
+.fontify{
+    font-family: "Courier New";
+    font-size: 18px;
+    color:black;
+}
+button{
+   /* margin: 5px;*/
+    text-align: center;
+}
+.fontifyr{
+    font-family: "Courier New";
+    font-size: 25px;
+    color: dodgerblue;
+}
+
+.fontifyErr{
+    font-family: "Courier New";
+    font-size: 35px;
+    color: red;
+}
+.fontifyS{
+     font-family: "Courier New";
+     font-size: 18px;
+     color:black;
+ }
+.fontifyHeader{
+    font-family: "Courier New";
+    font-size: 35px;
+    color: dodgerblue;
+}
