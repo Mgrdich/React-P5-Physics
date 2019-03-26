@@ -36,3 +36,6 @@ button {
 .myfooter {
   text-align: center;
 }
+.cur {
+  cursor: pointer;
+}

@@ -3,7 +3,7 @@ import { Carousel } from "react-bootstrap";
 import p1 from "../Pictures/spacexjpg.jpg";
 import p2 from "../Pictures/LargeHadron.jpg";
 import p3 from "../Pictures/iss.jpg";
-import p4 from "../Pictures/supernova.jpg";
+import p4 from "../Pictures/fullskymap.png";
 const Home = () => {
   return (
     <div className="bg-dark">

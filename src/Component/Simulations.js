@@ -1,6 +1,6 @@
 import React from "react";
 import infoSketches from "../information/MySketches";
-import Card from "./Card";
+import Card from "../ReusableComp/Card";
 import Table from "../ReusableComp/Table";
 
 class Simulations extends React.Component {
@@ -43,13 +43,12 @@ class Simulations extends React.Component {
   RenderCard (){
     const {SelectedSketch} =this.state;
     if(Object.keys(SelectedSketch).length>0)
-      return (<Card data ={SelectedSketch}/>);
+      return (<Card data ={SelectedSketch} Footer={true}/>);
     else
       return null;
   }
 
   render() {
-    console.log();
     return (
       <>
         <div className="row">

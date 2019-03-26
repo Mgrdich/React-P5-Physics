@@ -42,8 +42,9 @@ export default function(p) {
   };
 
   p.Calculate = () => {
-    p.vx = p.vx + p.acc * Math.cos(p.theta);
-    p.ellipseX += p.vx / 60 + p.acc*Math.sin(p.theta);                        //the physics is incorrect here the y direction acceleretion is not added
+    p.vx = p.vx + p.acc * Math.cos(p.theta) ;
+    p.vy= p.acc * Math.sin(p.theta);
+    p.ellipseX += p.vx / 60 ;                        //the physics is incorrect here the y direction acceleretion is not added
     p.ellipseY = p.slope * p.ellipseX  + p.njteh;
 
   };

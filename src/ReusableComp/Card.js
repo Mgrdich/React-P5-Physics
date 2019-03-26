@@ -25,13 +25,13 @@ const Card = props => {
   return (
     <div className="card">
       <h5 className="card-header" />
-        <img className="card-img-top" src = {data.src} alt="Card image cap"/>
+        <img className="card-img-top" src = {data.src} />
       <div className="card-body">
         <div className="fontifyHeader">
             {renderHeader()}
         </div>
         <p className="card-text fontify">{data.description}</p>
-        {renderFooter()}
+        {(props.Footer)?renderFooter():null}
       </div>
     </div>
   );
