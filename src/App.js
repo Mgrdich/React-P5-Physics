@@ -9,6 +9,7 @@ import Simulations2 from "./Component/Simulations2";
 import BNavBar from "./Component/BNavbar";
 import Simulations from "./Component/Simulations";
 import Simulations3 from "./Component/Simulations3";
+import Simulations4 from "./Component/Simulations4";
 import Footer from "./Component/Footer";
 
 class App extends Component {
@@ -23,7 +24,7 @@ class App extends Component {
           <Route path="/Simulations/Sim3" component={Simulations3} />
           <Route path="/Simulations/Sim1" component={Simulations1} />
           <Route path="/Simulations/Sim2" component={Simulations2} />
-
+          <Route path="/Simulations/Sim4" component={Simulations4} />
           <Route path="/notFound" component={NotFound} />
           <Redirect exact from="/" to="/Home" />
           <Redirect to="/notFound" />

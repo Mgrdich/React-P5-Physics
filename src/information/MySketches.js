@@ -1,7 +1,7 @@
 import Collison from '../Pictures/Collison.jpg';
 import InclinePlane from '../Pictures/InclinePlane.jpg';
 import ProjectileMotion from '../Pictures/ProjectileMotion.png'
-import Vectors from '../Pictures/Vectors.jpg'
+import Vectors from '../Pictures/Bouncing.png'
 import Electric from '../Pictures/ElectricFields.gif'
 export default function() {
 return [
@@ -30,7 +30,7 @@ return [
         src:InclinePlane
     },
     {
-        title:"Blob Vector",
+        title:"Bouncing Ball",
         description:" Velocity is a vector which shows the direction and rate of motion. The standard units of velocity are meters per second.\n" +
             "Speed and velocity are not the same thing: speed is a scalar, whereas velocity is a vector. One must use different rules when combining speeds and combining velocities.\n" +
             "The average velocity of an object is the total displacement during some extended period of time, divided by that period of time.\n" +
@@ -40,8 +40,8 @@ return [
             "Instantaneous acceleration is the rate and direction at which the velocity of an object is changing at one particular moment.\n" +
             "In everyday English, we use the term decelerate to describe the slowing of a body, but physicists use the word accelerate to denote both positive and negative changes in speed. ",
         id:4,
-        position:"Notyet",
-        Catagory:"Math,Physcis",
+        position:"Simulations/Sim4",
+        Catagory:"Physcis",
         src:Vectors
     },
     {

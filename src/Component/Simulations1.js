@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Sim1 from "./sketch1";
 import P5Wrapper from "./P5Wrapper";
 import ReportCard from "./ReportCard";
+import FormButton from "../ReusableComp/FormButton";
+import FormBodyRow from "../ReusableComp/FormBodyRow";
 
 class Simulations1 extends Component {
   state = {
@@ -53,16 +55,24 @@ class Simulations1 extends Component {
       mass:this.state.mass2,
     }
   };
+  fcolIne = ()=>{
+      const TMass =this.state.mass1+this.state.mass2;
+      return{
+        Mass:TMass,
+        Velocity: (this.state.velocity1*this.state.mass1+this.state.mass2*this.state.velocity2)/TMass
+      };
+  };
   render() {
-    const { start } = this.state;
+    const { start ,reset } = this.state;
     return (
       <>
         <div className="row">
-          <div className="col-8">
+          <div className="col-xl-8">
             <P5Wrapper sketch={Sim1} p5Props={this.state} />
+            <FormButton start={start} reset={reset} onClickR={this.ButtonClickR} onClickS={this.ButtonClick}/>
           </div>
 
-          <div className="col-4">
+          <div className="col-xl-4">
             <table className="table table-responsive mt-2 fontify">
               <thead className="thead-dark">
                 <tr>
@@ -72,126 +82,102 @@ class Simulations1 extends Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Height(#1)</td>
-                  <td>
-                    <input
-                      type="range"
-                      name="height1"
-                      min={50}
-                      max={300}
-                      onChange={this.handleChange}
-                      value={this.state.height1}
-                      disabled={start}
-                    />
-                  </td>
-                  <td>{this.state.height1}</td>
-                </tr>
-                <tr>
-                  <td>Height(#2)</td>
-                  <td>
-                    <input
-                      type="range"
-                      name="height2"
-                      min={50}
-                      max={300}
-                      onChange={this.handleChange}
-                      value={this.state.height2}
-                      disabled={start}
-                    />
-                  </td>
-                  <td>{this.state.height2}</td>
-                </tr>
-                <tr>
-                  <td>Width(#1)</td>
-                  <td>
-                    <input
-                      type="range"
-                      name="width1"
-                      min={50}
-                      max={200}
-                      onChange={this.handleChange}
-                      value={this.state.width1}
-                      disabled={start}
-                    />
-                  </td>
-                  <td>{this.state.width1}</td>
-                </tr>
-                <tr>
-                  <td>Width(#2)</td>
-                  <td>
-                    <input
-                      type="range"
-                      name="width2"
-                      min={50}
-                      max={200}
-                      onChange={this.handleChange}
-                      value={this.state.width2}
-                      disabled={start}
-                    />
-                  </td>
-                  <td>{this.state.width2}</td>
-                </tr>
-                <tr>
-                  <td>Velocity(#1)</td>
-                  <td>
-                    <input
-                      type="range"
-                      name="velocity1"
-                      min={0}
-                      max={60}
-                      onChange={this.handleChange}
-                      value={this.state.velocity1}
-                      disabled={start}
-                    />
-                  </td>
-                  <td>{this.state.velocity1}</td>
-                </tr>
-                <tr>
-                  <td>Velocity(#2)</td>
-                  <td>
-                    <input
-                      type="range"
-                      name="velocity2"
-                      min={0}
-                      max={60}
-                      onChange={this.handleChange}
-                      value={this.state.velocity2}
-                      disabled={start}
-                    />
-                  </td>
-                  <td>{this.state.velocity2}</td>
-                </tr>
-                <tr>
-                  <td>Mass(#1)</td>
-                  <td>
-                    <input
-                      type="range"
-                      name="mass1"
-                      min={10}
-                      max={100}
-                      onChange={this.handleChange}
-                      value={this.state.mass1}
-                      disabled={start}
-                    />
-                  </td>
-                  <td>{this.state.mass1}</td>
-                </tr>
-                <tr>
-                  <td>Mass(#2)</td>
-                  <td>
-                    <input
-                      type="range"
-                      name="mass2"
-                      min={10}
-                      max={100}
-                      onChange={this.handleChange}
-                      value={this.state.mass2}
-                      disabled={start}
-                    />
-                  </td>
-                  <td>{this.state.mass2}</td>
-                </tr>
+              <FormBodyRow
+                  label={"Height(#1)"}
+                  OnMyChange={this.handleChange}
+                  name={"height1"}
+                  Info={{
+                    min:50,
+                    max:400,
+                    value:this.state.height1,
+                    type:"range",
+                      disable:start
+                  }}
+              />
+              <FormBodyRow
+                  label={"Height(#2)"}
+                  OnMyChange={this.handleChange}
+                  name={"height2"}
+                  Info={{
+                    min:50,
+                    max:400,
+                    value:this.state.height2,
+                    type:"range",
+                      disable:start
+                  }}
+              />
+              <FormBodyRow
+                  label={"Width(#1)"}
+                  OnMyChange={this.handleChange}
+                  name={"width1"}
+                  Info={{
+                    min:50,
+                    max:200,
+                    value:this.state.width1,
+                    type:"range",
+                      disable:start
+                  }}
+              />
+              <FormBodyRow
+                  label={"Width(#2)"}
+                  OnMyChange={this.handleChange}
+                  name={"width2"}
+                  Info={{
+                    min:50,
+                    max:200,
+                    value:this.state.width2,
+                    type:"range",
+                      disable:start
+                  }}
+              />
+              <FormBodyRow
+                  label={"Velocity(#1)"}
+                  OnMyChange={this.handleChange}
+                  name={"velocity1"}
+                  Info={{
+                    min:0,
+                    max:60,
+                    value:this.state.velocity1,
+                    type:"range",
+                      disable:start
+                  }}
+              />
+              <FormBodyRow
+                  label={"Velocity(#2)"}
+                  OnMyChange={this.handleChange}
+                  name={"velocity2"}
+                  Info={{
+                    min:0,
+                    max:60,
+                    value:this.state.velocity2,
+                    type:"range",
+                      disable:start
+                  }}
+              />
+              <FormBodyRow
+                  label={"Mass(#1)"}
+                  OnMyChange={this.handleChange}
+                  name={"mass1"}
+                  Info={{
+                    min:0,
+                    max:60,
+                    value:this.state.mass1,
+                    type:"range",
+                      disable:start
+                  }}
+              />
+              <FormBodyRow
+                  label={"Mass(#2)"}
+                  OnMyChange={this.handleChange}
+                  name={"mass2"}
+                  Info={{
+                    min:0,
+                    max:60,
+                    value:this.state.mass2,
+                    type:"range",
+                      disable:start
+                  }}
+              />
                 <tr>
                   <td>Collison</td>
                   <td>
@@ -203,27 +189,7 @@ class Simulations1 extends Component {
                 </tr>
               </tbody>
             </table>
-            <form>
-              <button
-                className="btn btn-dark m-2"
-                type="button"
-                name="start"
-                value={start}
-                onClick={this.ButtonClick}
-                disabled={start}
-              >
-                Start
-              </button>
-              <button
-                className={start ? "btn btn-primary m-2" : "btn btn-dark m-2"}
-                type="button"
-                name="reset"
-                value={this.state.reset}
-                onClick={this.ButtonClickR}
-              >
-                Reset
-              </button>
-            </form>
+
           </div>
         </div>
 
@@ -246,12 +212,12 @@ class Simulations1 extends Component {
     );
   }
   ButtonClick = event => {
-    const { value, name } = event.target;
+    const { name } = event.target;
     this.setState({ [name]: true });
     this.setState({ reset: false });
   };
   ButtonClickR = event => {
-    const { value, name } = event.target;
+    const { name } = event.target;
     this.setState({ start: false });
     this.setState({ [name]: true });
   };
@@ -270,7 +236,7 @@ class Simulations1 extends Component {
     this.setState({ [name]: value });
   };
   renderFinal = () => {
-    if (this.state.start)
+    if (this.state.start && !this.state.Inelastic)
       return (
         <>
           <ReportCard
@@ -285,7 +251,13 @@ class Simulations1 extends Component {
           />
         </>
       );
-    else return null;
+    else if(this.state.start)return <ReportCard
+        info={this.fcolIne()}
+        name="Yellow & Green"
+        title="After Collison"
+        big={true}
+    />;
+    else return null
   };
 }
 

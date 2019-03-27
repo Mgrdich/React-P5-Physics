@@ -4,6 +4,8 @@ import Card from "../ReusableComp/Card";
 import DataScientist from "../information/DataConstants";
 import ListGroup from "../ReusableComp/ListGroup";
 import { profession } from "../information/DataConstants";
+import Searchbox from "../ReusableComp/Searchbox";
+import {SimplifyByReg} from "../utility/SearchRegExp";
 
 class Data extends Component {
   state = {
@@ -12,7 +14,8 @@ class Data extends Component {
     selectedProfession: {
       profession: "All",
       id: 0
-    }
+    },
+    search: ""
   };
   columns = [
     {
@@ -45,10 +48,17 @@ class Data extends Component {
     const { profession } = this.state.selectedProfession;
     const { sketches } = this.state;
     if (profession !== "All") {
-      return sketches.filter(item => {
+      const array = sketches.filter(item => {
         return item.profession === profession;
       });
-    } else return sketches;
+      if (this.state.search !== "") {
+        return SimplifyByReg(array, this.state.search);
+      } else return array;
+    } else {
+      if (this.state.search !== "")
+        return SimplifyByReg(sketches, this.state.search);
+      else return sketches;
+    }
   }
   render() {
     // const profession = ["Physicist", "Mathematician", "Engineer"];
@@ -56,19 +66,20 @@ class Data extends Component {
     return (
       <>
         <div className="row">
-          <div className="col-3">
+          <div className="col-xl-3 col-sm-5 col-12">
+            <Searchbox onChange={this.handleChange} />
             <ListGroup
               items={profession()}
               onItemSelect={this.handleProfessionSelect}
               selectedItem={this.state.selectedProfession}
             />
           </div>
-          <div className="col">
-            <Table columns={this.columns} data={this.TableData()} />
+          <div className="col-xl-9 col-sm-12 col-12 ">
+            <Table columns={this.columns} data={this.TableData()} col={10} />
           </div>
         </div>
-        <div className="row">
-          <div className="m-5 col-5 middle">{this.RenderCard()}</div>
+        <div className="row middle">
+          <div className="m-5 col-8 middle">{this.RenderCard()}</div>
         </div>
       </>
     );
@@ -83,8 +94,12 @@ class Data extends Component {
     this.setState({ SelectedSketch: item });
   }
   handleProfessionSelect = item => {
-    console.log("I am Handler:" + item);
+    //  console.log("I am Handler:" + item);
     this.setState({ selectedProfession: item });
+  };
+  handleChange = event => {
+    const { currentTarget } = event;
+    this.setState({ search: currentTarget.value });
   };
 }
 

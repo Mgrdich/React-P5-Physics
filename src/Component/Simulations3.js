@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import P5Wrapper from "./P5Wrapper";
 import simulu from "./sketch3";
 import ReportCard from "./ReportCard";
+import FormButton from "../ReusableComp/FormButton";
+import FormBodyRow from "../ReusableComp/FormBodyRow";
 
 class Simulations3 extends Component {
   state = {
     start: false,
     reset: false,
-    degree: 30,
+    degree: 40,
     radius: 25,
     coefficient: 0.1,
     Gravitational: 10,
@@ -34,15 +36,21 @@ class Simulations3 extends Component {
     };
   };
   render() {
-    const { start } = this.state;
+    const { start, reset } = this.state;
     return (
       <>
         <div className="row">
-          <div className="col-8">
+          <div className="col-xl-8">
             <P5Wrapper sketch={simulu} p5Props={this.state} />
+            <FormButton
+              start={start}
+              reset={reset}
+              onClickR={this.ButtonClickR}
+              onClickS={this.ButtonClick}
+            />
           </div>
 
-          <div className="col-4">
+          <div className="col-xl-4">
             <table className="table table-responsive mt-2  fontify">
               <thead className="thead-dark">
                 <tr>
@@ -52,107 +60,69 @@ class Simulations3 extends Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Degree</td>
-                  <td>
-                    <input
-                      min={1}
-                      max={89}
-                      type="range"
-                      name="degree"
-                      value={this.state.degree}
-                      onChange={this.handleChange}
-                      disabled={start}
-                    />
-                  </td>
-                  <td>{this.state.degree}</td>
-                </tr>
-                <tr>
-                  <td>Radius</td>
-                  <td>
-                    <input
-                      min={25}
-                      max={75}
-                      type="range"
-                      name="radius"
-                      value={this.state.radius}
-                      onChange={this.handleChange}
-                      disabled={start}
-                    />
-                  </td>
-                  <td>{this.state.radius}</td>
-                </tr>
-                <tr>
-                  <td>Coef. Friction</td>
-                  <td>
-                    <input
-                      min={0.1}
-                      max={0.9}
-                      type="range"
-                      name="coefficient"
-                      value={this.state.coefficient}
-                      onChange={this.handleChange}
-                      disabled={start}
-                      step={0.1}
-                    />
-                  </td>
-                  <td>{this.state.coefficient}</td>
-                </tr>
-                <tr>
-                  <td>Gravitation</td>
-                  <td>
-                    <input
-                      min={5}
-                      max={20}
-                      type="range"
-                      name="Gravitational"
-                      value={this.state.Gravitational}
-                      onChange={this.handleChange}
-                      disabled={start}
-                      step={1}
-                    />
-                  </td>
-                  <td>{this.state.Gravitational}</td>
-                </tr>
-                <tr>
-                  <td>Mass</td>
-                  <td>
-                    <input
-                      min={1}
-                      max={100}
-                      type="range"
-                      name="Mass"
-                      value={this.state.Mass}
-                      onChange={this.handleChange}
-                      disabled={start}
-                      step={1}
-                    />
-                  </td>
-                  <td>{this.state.Mass}</td>
-                </tr>
+                <FormBodyRow
+                  label={"Degree"}
+                  OnMyChange={this.handleChange}
+                  name={"degree"}
+                  Info={{
+                    min: 40,
+                    max: 89,
+                    value: this.state.degree,
+                    type: "range",
+                    disable: start
+                  }}
+                />
+                <FormBodyRow
+                  label={"Radius"}
+                  OnMyChange={this.handleChange}
+                  name={"radius"}
+                  Info={{
+                    min: 25,
+                    max: 75,
+                    value: this.state.radius,
+                    type: "range",
+                    disable: start
+                  }}
+                />
+                <FormBodyRow
+                  label={"Coef. Friction"}
+                  OnMyChange={this.handleChange}
+                  name={"coefficient"}
+                  Info={{
+                    min: 0.1,
+                    max: 0.9,
+                    value: this.state.coefficient,
+                    type: "range",
+                    disable: start,
+                    step: 0.1
+                  }}
+                />
+                <FormBodyRow
+                  label={"Gravitational"}
+                  OnMyChange={this.handleChange}
+                  name={"Gravitational"}
+                  Info={{
+                    min: 5,
+                    max: 20,
+                    value: this.state.Gravitational,
+                    type: "range",
+                    disable: start
+                  }}
+                />
+                <FormBodyRow
+                  label={"Mass"}
+                  OnMyChange={this.handleChange}
+                  name={"Mass"}
+                  Info={{
+                    min: 5,
+                    max: 100,
+                    value: this.state.Mass,
+                    type: "range",
+                    disable: start
+                  }}
+                />
               </tbody>
             </table>
-            <form>
-              <button
-                className="btn btn-dark m-2"
-                type="button"
-                name="start"
-                value={start}
-                onClick={this.ButtonClick}
-                disabled={this.state.start}
-              >
-                Start
-              </button>
-              <button
-                className={start ? "btn btn-primary m-2" : "btn btn-dark m-2"}
-                type="button"
-                name="reset"
-                value={this.state.reset}
-                onClick={this.ButtonClickR}
-              >
-                Reset
-              </button>
-            </form>
           </div>
         </div>
         <div className="card-deck">

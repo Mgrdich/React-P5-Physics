@@ -39,3 +39,6 @@ button {
 .cur {
   cursor: pointer;
 }
+.middle{
+  justify-content: center !important;
+}

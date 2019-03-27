@@ -9,7 +9,7 @@ const TableHead = props => {
       <thead className="table-dark">
         <tr>
           {columns.map(it => {
-            return <td  className="fontifyr" key={it.label || it.key}>{(it.label)?it.label:null}</td>;
+            return <td  className="fontify text-primary h3" key={it.label || it.key}>{(it.label)?it.label:null}</td>;
           })}
         </tr>
       </thead>

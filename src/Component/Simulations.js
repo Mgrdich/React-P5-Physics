@@ -52,7 +52,7 @@ class Simulations extends React.Component {
     return (
       <>
         <div className="row">
-        <Table columns={this.columns} data={this.state.sketches} />
+        <Table columns={this.columns} data={this.state.sketches} col={4} />
 
         <div className="m-2 col">
           {this.RenderCard()}
