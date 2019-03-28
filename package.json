@@ -7,6 +7,7 @@
     "bootstrap": "^4.3.1",
     "faker": "^4.1.0",
     "font-awesome": "^4.7.0",
+    "fs": "0.0.1-security",
     "joi-browser": "^13.4.0",
     "lodash": "^4.17.10",
     "mdbreact": "^4.11.1",
@@ -39,5 +40,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "raw-loader": "^2.0.0"
+  }
 }

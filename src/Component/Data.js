@@ -5,7 +5,7 @@ import DataScientist from "../information/DataConstants";
 import ListGroup from "../ReusableComp/ListGroup";
 import { profession } from "../information/DataConstants";
 import Searchbox from "../ReusableComp/Searchbox";
-import {SimplifyByReg} from "../utility/SearchRegExp";
+import { SimplifyByReg } from "../utility/SearchRegExp";
 
 class Data extends Component {
   state = {
@@ -31,7 +31,11 @@ class Data extends Component {
       content: item => {
         return (
           <button
-            className="btn btn-primary btn-sm"
+            className={
+              this.state.SelectedSketch === item
+                ? "btn btn-warning btn-sm"
+                : "btn btn-primary btn-sm"
+            }
             onClick={() => this.handleSelect(item)}
           >
             Select
@@ -41,8 +45,11 @@ class Data extends Component {
     }
   ];
   componentDidMount() {
-    this.setState({ sketches: DataScientist() });
     this.setState({ SelectedSketch: DataScientist()[0] });
+    const array = DataScientist().splice(1,DataScientist().length);
+    //console.log(array);
+    this.setState({ sketches: array });
+
   }
   TableData() {
     const { profession } = this.state.selectedProfession;

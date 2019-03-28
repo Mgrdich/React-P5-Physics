@@ -12,26 +12,37 @@ const Card = props => {
           Check me
         </Link>
       );
-    else return <div className="card-footer text-muted">Comming Soon</div>;
+    else return <div className="card-footer text-muted" />;
   };
 
   const renderHeader = () => {
-      if (data.position !== "Notyet")
-          return ( <Link to={data.position}>{data.title}</Link>);
-      else
-          return <div >{data.title}</div>
+    if (data.position !== "Notyet")
+      return <Link to={data.position}>{data.title}</Link>;
+    else return <div>{data.title}</div>;
+  };
+  const RenderExplanation = () => {
+    if (data.Explanation)
+      return (
+        <>
+          <p className="h2 text-dark">How to Use</p>
+          <p className="h4 text-dark">{data.Explanation}</p>
+        </>
+      );
   };
 
   return (
     <div className="card">
       <h5 className="card-header" />
-        <img className="card-img-top" src = {data.src}  alt="Not Found"/>
+      <img className="card-img-top" src={data.src} alt="" />
       <div className="card-body">
-        <div className="fontifyHeader">
-            {renderHeader()}
+        <div className="fontifyHeader">{renderHeader()}</div>
+        <div className="card-text fontify">
+          <div className="h4">{data.description}</div>
+          {
+              RenderExplanation()
+          }
         </div>
-        <p className="card-text fontify">{data.description}</p>
-        {(props.Footer)?renderFooter():null}
+        {props.Footer ? renderFooter() : null}
       </div>
     </div>
   );

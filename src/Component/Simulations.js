@@ -9,8 +9,10 @@ class Simulations extends React.Component {
     sketches: []
   };
   componentDidMount() {
-    this.setState({ sketches: infoSketches() });
-    this.setState({SelectedSketch:infoSketches()[0]})
+    this.setState({SelectedSketch:infoSketches()[0]});
+    const array = infoSketches().splice(1,infoSketches().length);
+    this.setState({ sketches: array });
+
   }
 
   columns = [
@@ -27,7 +29,7 @@ class Simulations extends React.Component {
       content: item => {
         return (
           <button
-            className="btn btn-primary btn-sm"
+              className={(this.state.SelectedSketch===item)?"btn btn-warning btn-sm":"btn btn-primary btn-sm"}
             onClick={() => this.handleSelect(item)}
           >
             Select
