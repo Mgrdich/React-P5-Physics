@@ -4,6 +4,8 @@ import simulu from "./sketch3";
 import ReportCard from "./ReportCard";
 import FormButton from "../ReusableComp/FormButton";
 import FormBodyRow from "../ReusableComp/FormBodyRow";
+import Joi from 'joi-browser';
+import createValidator from "../Validator/ReactValidator";
 
 class Simulations3 extends Component {
   state = {
@@ -14,6 +16,38 @@ class Simulations3 extends Component {
     coefficient: 0.1,
     Gravitational: 10,
     Mass: 25
+  };
+  schema = {
+          radius: Joi.number()
+              .required()
+              .integer()
+              .min(25)
+              .max(75)
+              .label("Radius"),
+          degree: Joi.number()
+              .required()
+              .min(1)
+              .max(89)
+              .label("Degree"),
+      coefficient: Joi.number()
+              .required()
+              .min(0.1)
+              .max(0.9)
+              .label("X_Position"),
+
+      Gravitational: Joi.number()
+          .required()
+          .min(5)
+          .max(20)
+          .label("Gravitational"),
+      Mass: Joi.number()
+          .required()
+          .min(5)
+          .max(100)
+          .label("Mass"),
+          start: Joi.boolean().required(),
+          reset: Joi.boolean().required(),
+
   };
   col = () => {
     return {
@@ -35,6 +69,7 @@ class Simulations3 extends Component {
       Friction_Force: coefficient * Mass * Gravitational * Math.cos(theta)
     };
   };
+
   render() {
     const { start, reset } = this.state;
     return (
@@ -47,6 +82,7 @@ class Simulations3 extends Component {
               reset={reset}
               onClickR={this.ButtonClickR}
               onClickS={this.ButtonClick}
+              error={createValidator(this.state,this.schema)}
             />
           </div>
 
@@ -65,7 +101,7 @@ class Simulations3 extends Component {
                   OnMyChange={this.handleChange}
                   name={"degree"}
                   Info={{
-                    min: 40,
+                    min: 1,
                     max: 89,
                     value: this.state.degree,
                     type: "range",
@@ -106,7 +142,8 @@ class Simulations3 extends Component {
                     max: 20,
                     value: this.state.Gravitational,
                     type: "range",
-                    disable: start
+                    disable: start,
+                      step:0.1
                   }}
                 />
                 <FormBodyRow

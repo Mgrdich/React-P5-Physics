@@ -1,4 +1,10 @@
 export default function(p) {
+  p.radius = 25;
+  p.degree = 40;
+  p.theta = (p.degree * Math.PI) / 180;
+  p.ellipseX = Math.sin(p.theta) * p.radius;
+  p.ellipseY = 100 - Math.cos(p.theta) * p.radius;
+  p.xPosition = 500 / Math.tan(p.theta);
   const reset1 = () => {
     p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
       if (props.p5Props) {
@@ -14,7 +20,7 @@ export default function(p) {
         p.slope = Math.tan(p.theta);
         p.g = props.p5Props.Gravitational; //input
         p.Myu = props.p5Props.coefficient; //input
-        p.v = 5;
+        p.v = 10;
         p.acc = p.g * Math.cos(p.theta) - p.Myu * Math.sin(p.theta); //formula with njteh
         p.vx = 0;
       }
@@ -42,8 +48,8 @@ export default function(p) {
   };
 
   p.Calculate = () => {
-    p.vx = p.vx + p.acc * Math.cos(p.theta) ;
-    p.vy= p.acc * Math.sin(p.theta);
+    p.vx = p.vx + p.acc * Math.sin(p.theta) ;
+//    p.vy= p.acc * Math.sin(p.theta);
     p.ellipseX += p.vx / 60 ;                        //the physics is incorrect here the y direction acceleretion is not added
     p.ellipseY = p.slope * p.ellipseX  + p.njteh;
 

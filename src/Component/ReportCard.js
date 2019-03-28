@@ -5,7 +5,7 @@ const ReportCard = (props) => {
     const values = Object.values(props.info);
 
     const Module = values.map((item,index)=>{
-        return(<li>{names[index]}:{item}</li>)
+        return(<li key={index}>{names[index]}:{item}</li>)
     })  ;
     const classIne=(props.big)?"col-xl-12":"col-lg-6 col-md-6 col-sm-12 col-xs-12";
     return (

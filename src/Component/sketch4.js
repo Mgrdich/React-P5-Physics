@@ -1,9 +1,8 @@
 export default function(p) {
   p.ball = {
-
-
+    x: 50,
+    y: 200
   };
-
 
   const reset = () => {
     p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
@@ -11,11 +10,11 @@ export default function(p) {
         p.ButtonClicked = props.p5Props.start;
         p.ButtonClickedR = props.p5Props.reset;
         p.ball.radius = Number(props.p5Props.radius); // also input
-         p.ball.xspeed=Number(props.p5Props.xspeed);
-         p.ball.yspeed=-Number(props.p5Props.yspeed);
-         p.Sticky = props.p5Props.Sticky;
-         p.ball.x = Number(props.p5Props.xPos);
-         p.ball.y = Number(props.p5Props.YPos);
+        p.ball.xspeed = Number(props.p5Props.xspeed);
+        p.ball.yspeed = -Number(props.p5Props.yspeed);
+        p.Sticky = props.p5Props.Sticky;
+        p.ball.x = Number(props.p5Props.xPos);
+        p.ball.y = Number(props.p5Props.YPos);
       }
     };
   };
@@ -25,9 +24,11 @@ export default function(p) {
   p.setup = () => {
     p.createCanvas(p.windowWidth / 1.5, p.windowHeight / 1.5);
     if (p.Sticky) p.background(0);
+
   };
 
   p.draw = () => {
+    if(p.ButtonClickedR) p.background(0);
     if (!p.Sticky) p.background(0);
     display1();
     if (p.ButtonClicked) {
@@ -46,7 +47,7 @@ export default function(p) {
   }
 
   function condi_bounce() {
-    if (p.ball.x < p.ball.radius || p.ball.x > p.width-p.ball.radius) {
+    if (p.ball.x < p.ball.radius || p.ball.x > p.width - p.ball.radius) {
       p.ball.xspeed *= -1;
     }
     if (p.ball.y < p.ball.radius || p.ball.y > p.height - p.ball.radius) {

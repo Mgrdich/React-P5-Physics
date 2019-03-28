@@ -1,5 +1,8 @@
 export default function(p) {
   // p.Range = (p.TotalVelocity * p.TotalVelocity * Math.sin(2 * p.theta)) / p.g;
+  p.radius = 25;
+  p.x1 = p.radius;
+  p.y1 = p.windowHeight / 1.5 - p.radius;
   const reset = () => {
     p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
       if (props.p5Props) {

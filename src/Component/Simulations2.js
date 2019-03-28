@@ -4,6 +4,8 @@ import Sim2 from "./sketch2";
 import ReportCard from "./ReportCard";
 import FormButton from "../ReusableComp/FormButton";
 import FormBodyRow from "../ReusableComp/FormBodyRow";
+import Joi from "joi-browser";
+import createValidator from "../Validator/ReactValidator";
 
 class Simulations2 extends Component {
   state = {
@@ -14,6 +16,32 @@ class Simulations2 extends Component {
     velocity: 10,
     Gravitational: 9.9
   };
+    schema = {
+        radius: Joi.number()
+            .required()
+            .integer()
+            .min(5)
+            .max(100)
+            .label("Radius"),
+        degree: Joi.number()
+            .required()
+            .min(1)
+            .max(90)
+            .label("Degree"),
+        velocity: Joi.number()
+            .required()
+            .min(5)
+            .max(20)
+            .label("Velocity"),
+        Gravitational: Joi.number()
+            .required()
+            .min(5)
+            .max(20)
+            .label("Gravitational"),
+        start: Joi.boolean().required(),
+        reset: Joi.boolean().required(),
+
+    };
   col = () => {
     return {
       degree: this.state.degree,
@@ -43,6 +71,7 @@ class Simulations2 extends Component {
               reset={reset}
               onClickR={this.ButtonClickR}
               onClickS={this.ButtonClick}
+              error={createValidator(this.state,this.schema)}
             />
           </div>
 
@@ -61,7 +90,7 @@ class Simulations2 extends Component {
                   OnMyChange={this.handleChange}
                   name={"degree"}
                   Info={{
-                    min: 0,
+                    min: 1,
                     max: 90,
                     value: this.state.degree,
                     type: "range",
@@ -73,8 +102,8 @@ class Simulations2 extends Component {
                   OnMyChange={this.handleChange}
                   name={"radius"}
                   Info={{
-                    min: 25,
-                    max: 75,
+                    min: 5,
+                    max: 100,
                     value: this.state.radius,
                     type: "range",
                     disable: start
@@ -86,7 +115,7 @@ class Simulations2 extends Component {
                   name={"velocity"}
                   Info={{
                     min: 5,
-                    max: 30,
+                    max: 20,
                     value: this.state.velocity,
                     type: "range",
                     disable: start

@@ -1,8 +1,8 @@
-import Collison from '../Pictures/Collison.jpg';
-import InclinePlane from '../Pictures/InclinePlane.jpg';
+import Collison from '../Pictures/Collison.png';
+import InclinePlane from '../Pictures/InclinePlane.png';
 import ProjectileMotion from '../Pictures/ProjectileMotion.png'
 import Vectors from '../Pictures/Bouncing.png'
-import Electric from '../Pictures/ElectricFields.gif'
+import Electric from '../Pictures/electricFields.png'
 export default function() {
 return [
     {

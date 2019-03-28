@@ -4,6 +4,8 @@ import P5Wrapper from "./P5Wrapper";
 import ReportCard from "./ReportCard";
 import FormButton from "../ReusableComp/FormButton";
 import FormBodyRow from "../ReusableComp/FormBodyRow";
+import Joi from "joi-browser";
+import createValidator from "../Validator/ReactValidator";
 
 class Simulations1 extends Component {
   state = {
@@ -17,7 +19,55 @@ class Simulations1 extends Component {
     velocity2: 20,
     mass1: 20,
     mass2: 15,
+  };
 
+  schema = {
+      start: Joi.boolean().required(),
+      reset: Joi.boolean().required(),
+      height1: Joi.number()
+          .required()
+          .integer()
+          .min(50)
+          .max(400)
+          .label("Height(#1)"),
+      height2: Joi.number()
+          .required()
+          .min(50)
+          .max(400)
+          .label("Height(#2)"),
+      width1: Joi.number()
+          .required()
+          .integer()
+          .min(50)
+          .max(200)
+          .label("Width (#1)"),
+      width2: Joi.number()
+          .required()
+          .min(50)
+          .max(200)
+          .label("Width (#2)"),
+      velocity1: Joi.number()
+          .required()
+          .integer()
+          .min(0)
+          .max(60)
+          .label("Velocity (#1)"),
+      velocity2: Joi.number()
+          .required()
+          .min(0)
+          .max(60)
+          .label("Velocity(#2)"),
+      mass1: Joi.number()
+          .required()
+          .integer()
+          .min(0)
+          .max(60)
+          .label("Mass (#1)"),
+      mass2: Joi.number()
+          .required()
+          .min(0)
+          .max(60)
+          .label("Mass (#2)"),
   };
   col1 = () => {
     return {
@@ -69,7 +119,13 @@ class Simulations1 extends Component {
         <div className="row">
           <div className="col-xl-8">
             <P5Wrapper sketch={Sim1} p5Props={this.state} />
-            <FormButton start={start} reset={reset} onClickR={this.ButtonClickR} onClickS={this.ButtonClick}/>
+            <FormButton
+                start={start}
+                reset={reset}
+                onClickR={this.ButtonClickR}
+                onClickS={this.ButtonClick}
+                error={createValidator(this.state,this.schema)}
+            />
           </div>
 
           <div className="col-xl-4">
