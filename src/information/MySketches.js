@@ -30,7 +30,8 @@ return [
         position:"Simulations/Sim1",
         Catagory:"Physcis",
         src:Collison,
-        Explanation:"This small program will give you access to modify your two bodies height width their masses and velocities just by putting the numbers then the code will execute and will give you the result of the collision you can also choose whether the collision is elastic or Inelastic. "
+        Explanation:"This small program will give you access to modify your two bodies height width their masses and velocities just by putting the numbers then the code will execute and will give you the result of the collision you can also choose whether the collision is elastic or Inelastic. ",
+        Wiki:"https://en.wikipedia.org/wiki/Elastic_collision"
     },
     {
         title:"Projectile Motion",
@@ -39,7 +40,8 @@ return [
         position:"Simulations/Sim2",
         Catagory:"Physics",
         src:ProjectileMotion,
-        Explanation:"This small program will give you access to modify your body which in this case  is a ball where you can choose the size of the ball the Gravitational constant the velocity vector magnitude and also the degree of the throw  and it will calculate the range in other words the distance traveled in the X axis direction ."
+        Explanation:"This small program will give you access to modify your body which in this case  is a ball where you can choose the size of the ball the Gravitational constant the velocity vector magnitude and also the degree of the throw  and it will calculate the range in other words the distance traveled in the X axis direction .",
+        Wiki:"https://en.wikipedia.org/wiki/Projectile_motion"
     },
     {
         title:"Incline Plane",
@@ -48,7 +50,8 @@ return [
         position:"Simulations/Sim3",
         Catagory:"Physcis",
         src:InclinePlane,
-        Explanation:"This small program will give you access to grasp the idea of the forces acting of the body which i situated on the incline Plane"
+        Explanation:"This small program will give you access to grasp the idea of the forces acting of the body which i situated on the incline Plane you can decide the radius of the ball the gravitational attraction also incline plane degree and it will calculate the Result for you",
+        Wiki:"https://en.wikipedia.org/wiki/Inclined_plane"
     },
     {
         title:"Bouncing Ball",
@@ -64,7 +67,8 @@ return [
         position:"Simulations/Sim4",
         Catagory:"Physcis",
         src:Vectors,
-        Explanation:"This small program will give you access to explore the idea of bouncing ball in some space here there is no friction it also lets you explore the idea of chaos theory and complex dynamical system where a small change can have very big difference on the output."
+        Explanation:"This small program will give you access to explore the idea of bouncing ball in some space here there is no friction it also lets you explore the idea of chaos theory and complex dynamical system where a small change can have very big difference on the output you can put the ball radius position and its velocity and set it free you can also put sticky where you can track your object traveled path .",
+        Wiki:"https://en.wikipedia.org/wiki/Bouncing_ball"
     },
     {
         title:"Electric Fields",
@@ -72,7 +76,8 @@ return [
         id:5,
         position:"Notyet",
         Catagory:"Physcis",
-        src:Electric
+        src:Electric,
+        Wiki:"https://en.wikipedia.org/wiki/Electric_field"
     }
 ];
 }
