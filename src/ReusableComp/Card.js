@@ -8,9 +8,13 @@ const Card = props => {
   const renderFooter = () => {
     if (data.position !== "Notyet")
       return (
-        <Link to={data.position} className="btn btn-dark">
-          Check me
-        </Link>
+          <>
+              <Link to={data.position} className="btn btn-dark">
+              Simulation
+          </Link>
+              <a href={data.Wiki} className="ml-1 btn btn-primary">Information</a>
+          </>
+
       );
     else return <div className="card-footer text-muted" />;
   };
