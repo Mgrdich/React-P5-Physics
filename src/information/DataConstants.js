@@ -1,15 +1,12 @@
-import txt from "./IDZero.txt";
-import {FetchText} from "../utility/FetchText";
-
 export default  function DataScientist() {
   let IdZero, IdOne, IdTwo, IdThree, IdFour, IdFive, IdSix, IdSeven;
- console.log(FetchText(txt));
+
 
   return [
     {
       title: "Unknown",
       position: "Notyet",
-      description: IdZero,
+      description: "Here will go my Life description remember that we all stand on the shoulder of giants",
       profession: "Scientist",
       id: 0
     },
