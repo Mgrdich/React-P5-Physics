@@ -18,56 +18,57 @@ class Simulations1 extends Component {
     velocity1: 10,
     velocity2: 20,
     mass1: 20,
-    mass2: 15,
+    mass2: 15
   };
 
   schema = {
-      start: Joi.boolean().required(),
-      reset: Joi.boolean().required(),
-      height1: Joi.number()
-          .required()
-          .integer()
-          .min(50)
-          .max(400)
-          .label("Height(#1)"),
-      height2: Joi.number()
-          .required()
-          .min(50)
-          .max(400)
-          .label("Height(#2)"),
-      width1: Joi.number()
-          .required()
-          .integer()
-          .min(50)
-          .max(200)
-          .label("Width (#1)"),
-      width2: Joi.number()
-          .required()
-          .min(50)
-          .max(200)
-          .label("Width (#2)"),
-      velocity1: Joi.number()
-          .required()
-          .integer()
-          .min(0)
-          .max(60)
-          .label("Velocity (#1)"),
-      velocity2: Joi.number()
-          .required()
-          .min(0)
-          .max(60)
-          .label("Velocity(#2)"),
-      mass1: Joi.number()
-          .required()
-          .integer()
-          .min(0)
-          .max(60)
-          .label("Mass (#1)"),
-      mass2: Joi.number()
-          .required()
-          .min(0)
-          .max(60)
-          .label("Mass (#2)"),
+    start: Joi.boolean().required(),
+    reset: Joi.boolean().required(),
+    height1: Joi.number()
+      .required()
+      .integer()
+      .min(50)
+      .max(400)
+      .label("Height(#1)"),
+    height2: Joi.number()
+      .required()
+      .min(50)
+      .max(400)
+      .label("Height(#2)"),
+    width1: Joi.number()
+      .required()
+      .integer()
+      .min(50)
+      .max(200)
+      .label("Width (#1)"),
+    width2: Joi.number()
+      .required()
+      .min(50)
+      .max(200)
+      .label("Width (#2)"),
+    velocity1: Joi.number()
+      .required()
+      .integer()
+      .min(0)
+      .max(60)
+      .label("Velocity (#1)"),
+    velocity2: Joi.number()
+      .required()
+      .min(0)
+      .max(60)
+      .label("Velocity(#2)"),
+    mass1: Joi.number()
+      .required()
+      .integer()
+      .min(0)
+      .max(60)
+      .label("Mass (#1)"),
+    mass2: Joi.number()
+      .required()
+      .min(0)
+      .max(60)
+      .label("Mass (#2)"),
+    Inelastic: Joi.required()
   };
   col1 = () => {
     return {
@@ -85,46 +86,51 @@ class Simulations1 extends Component {
       mass: this.state.mass2
     };
   };
-  fcol1 = ()=>{
-    const TMass =this.state.mass1+this.state.mass2;
-    let Vf = (2 * this.state.mass2 * this.state.velocity2 +
+  fcol1 = () => {
+    const TMass = this.state.mass1 + this.state.mass2;
+    let Vf =
+      (2 * this.state.mass2 * this.state.velocity2 +
         this.state.velocity1 * (this.state.mass1 - this.state.mass2)) /
-        (TMass);
-   return {
-     final_velocity:Vf ,
-     mass:this.state.mass1,
-   }
-  };
-  fcol2 = ()=>{
-    const TMass =this.state.mass1+this.state.mass2;
-    let Vf = (2 * this.state.mass1 * this.state.velocity1+
-        this.state.velocity2 * (this.state.mass2 - this.state.mass1)) /
-        (TMass);
+      TMass;
     return {
-      final_velocity:Vf,
-      mass:this.state.mass2,
-    }
+      final_velocity: Vf,
+      mass: this.state.mass1
+    };
   };
-  fcolIne = ()=>{
-      const TMass =this.state.mass1+this.state.mass2;
-      return{
-        Mass:TMass,
-        Velocity: (this.state.velocity1*this.state.mass1+this.state.mass2*this.state.velocity2)/TMass
-      };
+  fcol2 = () => {
+    const TMass = this.state.mass1 + this.state.mass2;
+    let Vf =
+      (2 * this.state.mass1 * this.state.velocity1 +
+        this.state.velocity2 * (this.state.mass2 - this.state.mass1)) /
+      TMass;
+    return {
+      final_velocity: Vf,
+      mass: this.state.mass2
+    };
+  };
+  fcolIne = () => {
+    const TMass = this.state.mass1 + this.state.mass2;
+    return {
+      Mass: TMass,
+      Velocity:
+        (this.state.velocity1 * this.state.mass1 +
+          this.state.mass2 * this.state.velocity2) /
+        TMass
+    };
   };
   render() {
-    const { start ,reset } = this.state;
+    const { start, reset } = this.state;
     return (
       <>
         <div className="row">
           <div className="col-xl-8">
             <P5Wrapper sketch={Sim1} p5Props={this.state} />
             <FormButton
-                start={start}
-                reset={reset}
-                onClickR={this.ButtonClickR}
-                onClickS={this.ButtonClick}
-                error={createValidator(this.state,this.schema)}
+              start={start}
+              reset={reset}
+              onClickR={this.ButtonClickR}
+              onClickS={this.ButtonClick}
+              error={createValidator(this.state, this.schema)}
             />
           </div>
 
@@ -138,102 +144,102 @@ class Simulations1 extends Component {
                 </tr>
               </thead>
               <tbody>
-              <FormBodyRow
+                <FormBodyRow
                   label={"Height(#1)"}
                   OnMyChange={this.handleChange}
                   name={"height1"}
                   Info={{
-                    min:50,
-                    max:400,
-                    value:this.state.height1,
-                    type:"range",
-                      disable:start
+                    min: 50,
+                    max: 400,
+                    value: this.state.height1,
+                    type: "range",
+                    disable: start
                   }}
-              />
-              <FormBodyRow
+                />
+                <FormBodyRow
                   label={"Height(#2)"}
                   OnMyChange={this.handleChange}
                   name={"height2"}
                   Info={{
-                    min:50,
-                    max:400,
-                    value:this.state.height2,
-                    type:"range",
-                      disable:start
+                    min: 50,
+                    max: 400,
+                    value: this.state.height2,
+                    type: "range",
+                    disable: start
                   }}
-              />
-              <FormBodyRow
+                />
+                <FormBodyRow
                   label={"Width(#1)"}
                   OnMyChange={this.handleChange}
                   name={"width1"}
                   Info={{
-                    min:50,
-                    max:200,
-                    value:this.state.width1,
-                    type:"range",
-                      disable:start
+                    min: 50,
+                    max: 200,
+                    value: this.state.width1,
+                    type: "range",
+                    disable: start
                   }}
-              />
-              <FormBodyRow
+                />
+                <FormBodyRow
                   label={"Width(#2)"}
                   OnMyChange={this.handleChange}
                   name={"width2"}
                   Info={{
-                    min:50,
-                    max:200,
-                    value:this.state.width2,
-                    type:"range",
-                      disable:start
+                    min: 50,
+                    max: 200,
+                    value: this.state.width2,
+                    type: "range",
+                    disable: start
                   }}
-              />
-              <FormBodyRow
+                />
+                <FormBodyRow
                   label={"Velocity(#1)"}
                   OnMyChange={this.handleChange}
                   name={"velocity1"}
                   Info={{
-                    min:0,
-                    max:60,
-                    value:this.state.velocity1,
-                    type:"range",
-                      disable:start
+                    min: 0,
+                    max: 60,
+                    value: this.state.velocity1,
+                    type: "range",
+                    disable: start
                   }}
-              />
-              <FormBodyRow
+                />
+                <FormBodyRow
                   label={"Velocity(#2)"}
                   OnMyChange={this.handleChange}
                   name={"velocity2"}
                   Info={{
-                    min:0,
-                    max:60,
-                    value:this.state.velocity2,
-                    type:"range",
-                      disable:start
+                    min: 0,
+                    max: 60,
+                    value: this.state.velocity2,
+                    type: "range",
+                    disable: start
                   }}
-              />
-              <FormBodyRow
+                />
+                <FormBodyRow
                   label={"Mass(#1)"}
                   OnMyChange={this.handleChange}
                   name={"mass1"}
                   Info={{
-                    min:0,
-                    max:60,
-                    value:this.state.mass1,
-                    type:"range",
-                      disable:start
+                    min: 0,
+                    max: 60,
+                    value: this.state.mass1,
+                    type: "range",
+                    disable: start
                   }}
-              />
-              <FormBodyRow
+                />
+                <FormBodyRow
                   label={"Mass(#2)"}
                   OnMyChange={this.handleChange}
                   name={"mass2"}
                   Info={{
-                    min:0,
-                    max:60,
-                    value:this.state.mass2,
-                    type:"range",
-                      disable:start
+                    min: 0,
+                    max: 60,
+                    value: this.state.mass2,
+                    type: "range",
+                    disable: start
                   }}
-              />
+                />
                 <tr>
                   <td>Collison</td>
                   <td>
@@ -245,7 +251,6 @@ class Simulations1 extends Component {
                 </tr>
               </tbody>
             </table>
-
           </div>
         </div>
 
@@ -261,9 +266,7 @@ class Simulations1 extends Component {
             title="Initial Information"
           />
         </div>
-        <div className="card-deck">{
-          this.renderFinal()
-        }</div>
+        <div className="card-deck">{this.renderFinal()}</div>
       </>
     );
   }
@@ -295,11 +298,7 @@ class Simulations1 extends Component {
     if (this.state.start && !this.state.Inelastic)
       return (
         <>
-          <ReportCard
-            info={this.fcol1()}
-            name="Green"
-            title="After Collison"
-          />
+          <ReportCard info={this.fcol1()} name="Green" title="After Collison" />
           <ReportCard
             info={this.fcol2()}
             name="Yellow"
@@ -307,13 +306,16 @@ class Simulations1 extends Component {
           />
         </>
       );
-    else if(this.state.start)return <ReportCard
-        info={this.fcolIne()}
-        name="Yellow & Green"
-        title="After Collison"
-        big={true}
-    />;
-    else return null
+    else if (this.state.start)
+      return (
+        <ReportCard
+          info={this.fcolIne()}
+          name="Yellow & Green"
+          title="After Collison"
+          big={true}
+        />
+      );
+    else return null;
   };
 }
 
