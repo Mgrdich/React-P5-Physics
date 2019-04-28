@@ -24,11 +24,10 @@ export default function(p) {
   p.setup = () => {
     p.createCanvas(p.windowWidth / 1.5, p.windowHeight / 1.5);
     if (p.Sticky) p.background(0);
-
   };
 
   p.draw = () => {
-    if(p.ButtonClickedR) p.background(0);
+    if (p.ButtonClickedR) p.background(0);
     if (!p.Sticky) p.background(0);
     display1();
     if (p.ButtonClicked) {

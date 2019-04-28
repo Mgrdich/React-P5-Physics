@@ -64,8 +64,6 @@ class Data extends Component {
       acc.push(obj);
       return acc;
     }, []);
-
-
     this.setState({ sketches: AddedDesc });
   }
 

@@ -18,7 +18,8 @@ class Simulations1 extends Component {
     velocity1: 10,
     velocity2: 20,
     mass1: 20,
-    mass2: 15
+    mass2: 15,
+      Inelastic:true
   };
 
   schema = {
@@ -60,12 +61,12 @@ class Simulations1 extends Component {
     mass1: Joi.number()
       .required()
       .integer()
-      .min(0)
+      .min(1)
       .max(60)
       .label("Mass (#1)"),
     mass2: Joi.number()
       .required()
-      .min(0)
+      .min(1)
       .max(60)
       .label("Mass (#2)"),
     Inelastic: Joi.required()
@@ -221,7 +222,7 @@ class Simulations1 extends Component {
                   OnMyChange={this.handleChange}
                   name={"mass1"}
                   Info={{
-                    min: 0,
+                    min: 1,
                     max: 60,
                     value: this.state.mass1,
                     type: "range",
@@ -233,7 +234,7 @@ class Simulations1 extends Component {
                   OnMyChange={this.handleChange}
                   name={"mass2"}
                   Info={{
-                    min: 0,
+                    min: 1,
                     max: 60,
                     value: this.state.mass2,
                     type: "range",
